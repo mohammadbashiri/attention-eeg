@@ -37,8 +37,8 @@ for blocks in range(no_of_blocks):
     flash2_color = exp.randomize2str('red', 'green')
 
     # type
-    prob_target = 1
-    prob_std = 0
+    prob_target = .25
+    prob_std = .75
     stim_type = exp.randomize2type(3, prob_std, 9, prob_target)  # delay (frames), probability, delay (frames), probability
 
     # get randomized target value, depending on the experiment mode
@@ -65,7 +65,7 @@ for blocks in range(no_of_blocks):
     if block_counter == 0:
         exp.welcome_msg.draw()
         mywin.flip()
-        event.waitKeys(keyList='space')  # wait for subject to press space
+        event.waitKeys(keyList='return')  # wait for subject to press enter
         event.clearEvents()
 
     # start of the block
@@ -81,10 +81,10 @@ for blocks in range(no_of_blocks):
         exp.attended_feature.draw()
         mywin.flip()
 
-        # press space to continue
-        event.waitKeys(keyList='space')
+        # press enter to continue
+        event.waitKeys(keyList='return')
 
-        for frame in range(60):
+        for frame in range(120):
             exp.fixat.draw()
             mywin.flip()
 
@@ -195,9 +195,8 @@ for blocks in range(no_of_blocks):
         exp.closing_msg.draw()
         mywin.flip()
 
-        event.waitKeys(keyList='space')
+        event.waitKeys(keyList='return')
 
 # cleanup
 mywin.close()
 core.quit()
-

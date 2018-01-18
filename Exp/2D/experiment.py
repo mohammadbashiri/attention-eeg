@@ -7,7 +7,7 @@ class Experiment(object):
 
         # Welcoming/intro
         self.welcome_msg = visual.TextStim(win=win,
-                                           text='Welcome to the experiment\nPlease press SCAPE to proceed',
+                                           text='Welcome to the experiment\nPlease press ENTER to proceed',
                                            pos=[0, 0], alignHoriz='center',
                                            color=(0, 0, 0))
         # Instructions
