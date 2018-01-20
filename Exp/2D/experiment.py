@@ -6,10 +6,26 @@ class Experiment(object):
     def __init__(self, win=None, trials_no=None, mode='motion-color'):
 
         # Welcoming/intro
-        self.welcome_msg = visual.TextStim(win=win,
-                                           text='Welcome to the experiment\nPlease press ENTER to proceed',
-                                           pos=[0, 0], alignHoriz='center',
-                                           color=(0, 0, 0))
+        self.welcome_msg1 = visual.TextStim(win=win,
+                                            text='Welcome to',
+                                            pos=[0, 10], alignHoriz='center',
+                                            color=(0, 0, 0))
+        self.welcome_msg2 = visual.TextStim(win=win,
+                                            text='AttentionEEG experiment',
+                                            pos=[0, 8], alignHoriz='center',
+                                            color=(0, 0, 0), bold=True)
+        self.welcome_msg3 = visual.TextStim(win=win,
+                                            text='Please press',
+                                            pos=[0, 1], alignHoriz='center',
+                                            color=(0, 0, 0))
+        self.welcome_msg4 = visual.TextStim(win=win,
+                                            text='RIGHT ARROW KEY',
+                                            pos=[0, -1], alignHoriz='center',
+                                            color=(0, 0, 0))
+        self.welcome_msg5 = visual.TextStim(win=win,
+                                            text='to proceed',
+                                            pos=[0, -3], alignHoriz='center',
+                                            color=(0, 0, 0))
         # Instructions
         if mode == 'motion-shape':
             self.instruct1_msg = visual.TextStim(win=win,

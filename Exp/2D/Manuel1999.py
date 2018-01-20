@@ -73,20 +73,25 @@ for blocks in range(no_of_blocks):
 
     # welcoming message and introduction
     if block_counter == 0:
-        exp.welcome_msg.draw()
+        exp.welcome_msg1.draw()
+        exp.welcome_msg2.draw()
+        exp.welcome_msg3.draw()
+        exp.welcome_msg4.draw()
+        exp.welcome_msg5.draw()
         mywin.flip()
-        event.waitKeys(keyList='return')  # wait for subject to press enter
+        event.waitKeys(keyList='right')  # wait for subject to press right arrow key
         event.clearEvents()
 
     # display the instructions
     exp.instruct1_msg.draw()
     exp.attended_feature.setText(attended_feature_text_joined)
     exp.attended_feature.pos = (0, -1.5)
+    exp.attended_feature.bold = True
     exp.attended_feature.draw()
     mywin.flip()
 
-    # press enter to continue
-    event.waitKeys(keyList='return')
+    # press right arrow key to continue
+    event.waitKeys(keyList='right')
 
     # marker - block start (after the subject decided to proceed)
     port.setData(exp.block_start)
@@ -181,7 +186,7 @@ for blocks in range(no_of_blocks):
     if block_counter == no_of_blocks:
         exp.closing_msg.draw()
         mywin.flip()
-        event.waitKeys(keyList='return')
+        event.waitKeys(keyList='right')  # press right arrow key to exit
 
 # save logged data
 filepath = '../../datalog/'
