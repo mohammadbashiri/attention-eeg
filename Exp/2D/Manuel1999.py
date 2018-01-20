@@ -7,10 +7,10 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 # exp and subject spcecifications
-subject_name = 'Bashiri'
-session_no = 10
-no_of_blocks = 2
-no_of_trials = 10  # per block
+subject_name = 'Abdallah'
+session_no = '01'
+no_of_blocks = 10
+no_of_trials = 4  # per block
 block_counter = 0
 
 # initialize a DataLogger object
@@ -114,14 +114,7 @@ for blocks in range(no_of_blocks):
         obj_disp.fillColor = flash1_color[trial]
 
         # marker - flash1
-        if exp.isTarget(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
-            port.setData(exp.flash1_start_target)
-
-        elif exp.isStandard(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
-            port.setData(exp.flash1_start_standard)
-
-        else:
-            port.setData(exp.flash1_start_Non)
+        port.setData(exp.flash1_start_Non)
 
         # flash 1 (duration = 33ms)
         for frame in range(2):

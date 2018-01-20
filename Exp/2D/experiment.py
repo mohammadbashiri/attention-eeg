@@ -82,15 +82,15 @@ class Experiment(object):
         if mode == 'motion-color':
             self.block_start = 1
             self.flash1_start_Non = 2
-            self.flash1_start_standard = 3
-            self.flash1_start_target = 4
+            # self.flash1_start_standard = 3
+            # self.flash1_start_target = 4
             self.flash2_start = 5
 
         if mode == 'motion-shape':
             self.block_start = 6
             self.flash1_start_Non = 7
-            self.flash1_start_standard = 8
-            self.flash1_start_target = 9
+            # self.flash1_start_standard = 8
+            # self.flash1_start_target = 9
             self.flash2_start = 10
 
         self.response_marker = 11
