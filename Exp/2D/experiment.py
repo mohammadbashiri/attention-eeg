@@ -157,3 +157,52 @@ class Experiment(object):
 
     def getrand_pos(self):
         return np.random.rand()*8-4, 3.5  # this depends on the boundaries (x-axis) of the imaginary rectangle
+
+class DataLogger:
+
+    def __init__(self, subject_name='unknown', session_no='00', no_of_blocks=0, no_of_trials=0):
+
+        # subject information
+        self.subject_name = subject_name
+        self.session_no = str(session_no)
+        self._block_no = no_of_blocks
+        self._trial_no = no_of_trials
+
+        # logging information
+        self._block_no_ls = []
+        self._trial_mode_ls = []
+        self._flash1_shape_ls = []
+        self._flash2_shape_ls = []
+        self._flash1_color_ls = []
+        self._flash2_color_ls = []
+        self._shift_ls = []
+        self._stim_type_ls = []
+        self._attended_feature1_ls = []
+        self._attended_feature2_ls = []
+
+
+    def update(self, block_counter, exp_mode, flash1_shape, flash2_shape, flash1_color, flash2_color, lr, stim_type, feature1, feature2):
+        self._block_no_ls += [str(block_counter + 1)] * self._trial_no
+        self._trial_mode_ls += [exp_mode] * self._trial_no
+        self._flash1_shape_ls += map(str, flash1_shape)
+        self._flash2_shape_ls += map(str, flash2_shape)
+        self._flash1_color_ls += list(flash1_color)
+        self._flash2_color_ls += list(flash2_color)
+        self._shift_ls += map(str, lr)
+        self._stim_type_ls += map(str, stim_type)
+        self._attended_feature1_ls += [str(feature1)] * self._trial_no
+        self._attended_feature2_ls += [str(feature2)] * self._trial_no
+
+
+    def save(self, filepath):
+
+        filename = filepath + self.subject_name + '_s' + self.session_no + '_' + str(self._block_no) + 'blocks_each' + str(
+            self._trial_no) + 'trials' + '.txt'
+
+        with open(filename, 'w') as f:
+            f.write('trial\t' + 'block\t' + 'mode\t' + 'shape1\t' + 'shape2\t' + 'color1\t' + 'color2\t' + 'shift\t' + 'stim_type\t' + 'feat1\t' + 'feat2\n')
+            for trial, (block, mode, shape1, shape2, color1, color2, shift, stim_t, feat1, feat2) in \
+                    enumerate(zip(self._block_no_ls, self._trial_mode_ls, self._flash1_shape_ls, self._flash2_shape_ls, self._flash1_color_ls,
+                                  self._flash2_color_ls, self._shift_ls, self._stim_type_ls, self._attended_feature1_ls, self._attended_feature2_ls)):
+                f.write(str(trial + 1) + '\t' + block + '\t' + mode + '\t' + shape1 + '\t' + shape2 + '\t' + color1 + '\t' +
+                        color2 + '\t' + shift + '\t' + stim_t + '\t' + feat1 + '\t' + feat2 + '\n')
