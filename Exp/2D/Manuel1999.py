@@ -78,9 +78,6 @@ for blocks in range(no_of_blocks):
         event.waitKeys(keyList='return')  # wait for subject to press enter
         event.clearEvents()
 
-    # marker - block start
-    port.setData(exp.block_start)
-
     # display the instructions
     exp.instruct1_msg.draw()
     exp.attended_feature.setText(attended_feature_text_joined)
@@ -90,6 +87,9 @@ for blocks in range(no_of_blocks):
 
     # press enter to continue
     event.waitKeys(keyList='return')
+
+    # marker - block start (after the subject decided to proceed)
+    port.setData(exp.block_start)
 
     # wait for 2 seconds for subject get ready and then start
     for frame in range(120):
