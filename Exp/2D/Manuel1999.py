@@ -8,8 +8,8 @@ port = parallel.ParallelPort(0xDC00)
 
 
 # exp spcecifications
-no_of_blocks = 2
-no_of_trials = 20  # per block
+no_of_blocks = 20
+no_of_trials = 50  # per block
 
 block_counter = 0
 
@@ -59,6 +59,7 @@ for blocks in range(no_of_blocks):
     attended_feature_text = (feature1Text, 'to', feature2Text)
     attended_feature_text_joined = space.join(attended_feature_text)
 
+    print('number of blocks left:', no_of_blocks - block_counter)
     print(feature1, feature1Text, feature2, feature2Text, attended_feature_text_joined)
 
     # welcoming message and introduction

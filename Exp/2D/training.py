@@ -8,13 +8,13 @@ port = parallel.ParallelPort(0xDC00)
 
 
 # exp spcecifications
-no_of_blocks = 2
-no_of_trials = 20  # per block
+no_of_blocks = 5
+no_of_trials = 4  # per block
 
 block_counter = 0
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9,.9,.9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg", color=(.9,.9,.9))
 
 for blocks in range(no_of_blocks):
 
@@ -59,6 +59,7 @@ for blocks in range(no_of_blocks):
     attended_feature_text = (feature1Text, 'to', feature2Text)
     attended_feature_text_joined = space.join(attended_feature_text)
 
+    print('number of blocks left:', no_of_blocks-block_counter)
     print(feature1, feature1Text, feature2, feature2Text, attended_feature_text_joined)
 
     # welcoming message and introduction
