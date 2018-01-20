@@ -1,32 +1,20 @@
 from psychopy import visual, core, event, parallel, monitors  # import some libraries from PsychoPy
-from experiment import Experiment
+from experiment import Experiment, DataLogger
 import numpy as np
 
 
 # initialize parallel port
 port = parallel.ParallelPort(0xDC00)
 
-
-# logging information
-block_no_ls = []
-trial_mode_ls = []
-flash1_shape_ls = []
-flash2_shape_ls = []
-flash1_color_ls = []
-flash2_color_ls = []
-shift_ls = []
-stim_type_ls = []
-attended_feature1_ls = []
-attended_feature2_ls = []
-
-
-# exp spcecifications
-subject_name = 'Bashiri'
-session_no = '01'
+# exp and subject spcecifications
+subject_name = 'Saini'
+session_no = 10
 no_of_blocks = 2
 no_of_trials = 10  # per block
-
 block_counter = 0
+
+# initialize a DataLogger object
+data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
 mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9, .9, .9))
@@ -76,18 +64,8 @@ for blocks in range(no_of_blocks):
 
 
     # log the information for this trial
-    # todo: this update should be implemented in a class method and these lists must the experiment attributes
-
-    block_no_ls += [str(block_counter+1)] * no_of_trials
-    trial_mode_ls += [exp.mode] * no_of_trials
-    flash1_shape_ls += map(str, flash1_shape)
-    flash2_shape_ls += map(str, flash2_shape)
-    flash1_color_ls += list(flash1_color)
-    flash2_color_ls += list(flash2_color)
-    shift_ls += map(str, lr)
-    stim_type_ls += map(str, stim_type)
-    attended_feature1_ls += [str(feature1)] * no_of_trials
-    attended_feature2_ls += [str(feature2)] * no_of_trials
+    data_logger.update_log(block_counter, exp.mode, flash1_shape, flash2_shape, flash1_color, flash2_color, lr, stim_type,
+                           feature1, feature2)
 
     print('blocks left:', no_of_blocks-block_counter, attended_feature_text_joined)
     # print(str(feature1), feature1Text, str(feature2), feature2Text, attended_feature_text_joined)
@@ -231,14 +209,8 @@ for blocks in range(no_of_blocks):
 
 
 # save logged data
-filename = '../../datalog/'+ subject_name+'s'+session_no+'_'+str(no_of_blocks)+'blocks_each'+str(no_of_trials)+'trials'+'.txt'
-with open(filename, 'w') as f:
-    f.write('trial\t' + 'block\t' + 'mode\t' + 'shape1\t' + 'shape2\t' + 'color1\t' + 'color2\t' + 'shift\t' + 'stim_type\t' + 'feat1\t' + 'feat2\n')
-    for trial, (block, mode, shape1, shape2, color1, color2, shift, stim_t, feat1, feat2) in \
-            enumerate(zip(block_no_ls, trial_mode_ls, flash1_shape_ls, flash2_shape_ls, flash1_color_ls,
-                          flash2_color_ls, shift_ls, stim_type_ls, attended_feature1_ls, attended_feature2_ls)):
-        f.write(str(trial + 1) + '\t' + block + '\t' + mode + '\t' + shape1 + '\t' + shape2 + '\t' + color1 + '\t' +
-                color2 + '\t' + shift + '\t' + stim_t + '\t' + feat1 + '\t' + feat2 + '\n')
+filepath = '../../datalog/'
+data_logger.save_log(filepath=filepath)
 
 # cleanup
 mywin.close()
