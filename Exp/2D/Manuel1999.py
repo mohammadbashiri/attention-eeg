@@ -89,19 +89,8 @@ for blocks in range(no_of_blocks):
     attended_feature1_ls += [str(feature1)] * no_of_trials
     attended_feature2_ls += [str(feature2)] * no_of_trials
 
-    print(block_no_ls)
-    print(trial_mode_ls)
-    print(flash1_shape_ls)
-    print(flash2_shape_ls)
-    print(flash1_color_ls)
-    print(flash2_color_ls)
-    print(shift_ls)
-    print(stim_type_ls)
-    print(attended_feature1_ls)
-    print(attended_feature2_ls)
-
-    # print('block number:', block_counter+1)
-    print(str(feature1), feature1Text, str(feature2), feature2Text, attended_feature_text_joined)
+    print('blocks left:', no_of_blocks-block_counter, attended_feature_text_joined)
+    # print(str(feature1), feature1Text, str(feature2), feature2Text, attended_feature_text_joined)
 
 
     # welcoming message and introduction
