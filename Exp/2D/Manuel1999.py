@@ -7,9 +7,24 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 
+# logging information
+block_no_ls = []
+trial_mode_ls = []
+flash1_shape_ls = []
+flash2_shape_ls = []
+flash1_color_ls = []
+flash2_color_ls = []
+shift_ls = []
+stim_type_ls = []
+attended_feature1_ls = []
+attended_feature2_ls = []
+
+
 # exp spcecifications
-no_of_blocks = 20
-no_of_trials = 50  # per block
+subject_name = 'Bashiri'
+session_no = '01'
+no_of_blocks = 2
+no_of_trials = 10  # per block
 
 block_counter = 0
 
@@ -33,8 +48,8 @@ for blocks in range(no_of_blocks):
     lr = exp.randomize2val(shift_val, -shift_val)
 
     # color
-    flash1_color = exp.randomize2str('red', 'green')
-    flash2_color = exp.randomize2str('red', 'green')
+    flash1_color = exp.randomize2str('red', 'blue')
+    flash2_color = exp.randomize2str('red', 'blue')
 
     # type
     prob_target = .25
@@ -42,9 +57,9 @@ for blocks in range(no_of_blocks):
     stim_type = exp.randomize2type(3, prob_std, 9, prob_target)  # delay (frames), probability, delay (frames), probability
 
     # get randomized target value, depending on the experiment mode
-    feature1, feature2 = exp.getRandAttendedFeature(('red', 'green'), (0, 1), (shift_val, -shift_val))
+    feature1, feature2 = exp.getRandAttendedFeature(('red', 'blue'), (0, 1), (shift_val, -shift_val))
 
-    if feature1 == 'red' or feature1 == 'green':
+    if feature1 == 'red' or feature1 == 'blue':
         feature1Text = feature1
     elif feature1 == 0:
         feature1Text = 'square'
@@ -59,8 +74,35 @@ for blocks in range(no_of_blocks):
     attended_feature_text = (feature1Text, 'to', feature2Text)
     attended_feature_text_joined = space.join(attended_feature_text)
 
-    print('number of blocks left:', no_of_blocks - block_counter)
-    print(feature1, feature1Text, feature2, feature2Text, attended_feature_text_joined)
+
+    # log the information for this trial
+    # todo: this update should be implemented in a class method and these lists must the experiment attributes
+
+    block_no_ls += [str(block_counter+1)] * no_of_trials
+    trial_mode_ls += [exp.mode] * no_of_trials
+    flash1_shape_ls += map(str, flash1_shape)
+    flash2_shape_ls += map(str, flash2_shape)
+    flash1_color_ls += list(flash1_color)
+    flash2_color_ls += list(flash2_color)
+    shift_ls += map(str, lr)
+    stim_type_ls += map(str, stim_type)
+    attended_feature1_ls += [str(feature1)] * no_of_trials
+    attended_feature2_ls += [str(feature2)] * no_of_trials
+
+    print(block_no_ls)
+    print(trial_mode_ls)
+    print(flash1_shape_ls)
+    print(flash2_shape_ls)
+    print(flash1_color_ls)
+    print(flash2_color_ls)
+    print(shift_ls)
+    print(stim_type_ls)
+    print(attended_feature1_ls)
+    print(attended_feature2_ls)
+
+    # print('block number:', block_counter+1)
+    print(str(feature1), feature1Text, str(feature2), feature2Text, attended_feature_text_joined)
+
 
     # welcoming message and introduction
     if block_counter == 0:
@@ -197,6 +239,17 @@ for blocks in range(no_of_blocks):
         mywin.flip()
 
         event.waitKeys(keyList='return')
+
+
+# save logged data
+filename = '../../datalog/'+ subject_name+'s'+session_no+'_'+str(no_of_blocks)+'blocks_each'+str(no_of_trials)+'trials'+'.txt'
+with open(filename, 'w') as f:
+    f.write('trial\t' + 'block\t' + 'mode\t' + 'shape1\t' + 'shape2\t' + 'color1\t' + 'color2\t' + 'shift\t' + 'stim_type\t' + 'feat1\t' + 'feat2\n')
+    for trial, (block, mode, shape1, shape2, color1, color2, shift, stim_t, feat1, feat2) in \
+            enumerate(zip(block_no_ls, trial_mode_ls, flash1_shape_ls, flash2_shape_ls, flash1_color_ls,
+                          flash2_color_ls, shift_ls, stim_type_ls, attended_feature1_ls, attended_feature2_ls)):
+        f.write(str(trial + 1) + '\t' + block + '\t' + mode + '\t' + shape1 + '\t' + shape2 + '\t' + color1 + '\t' +
+                color2 + '\t' + shift + '\t' + stim_t + '\t' + feat1 + '\t' + feat2 + '\n')
 
 # cleanup
 mywin.close()
