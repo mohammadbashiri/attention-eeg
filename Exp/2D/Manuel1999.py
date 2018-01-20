@@ -7,7 +7,7 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 # exp and subject spcecifications
-subject_name = 'Saini'
+subject_name = 'Bashiri'
 session_no = 10
 no_of_blocks = 2
 no_of_trials = 10  # per block
@@ -22,9 +22,9 @@ mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg"
 for blocks in range(no_of_blocks):
 
     if block_counter % 2 == 0:
-        exp = Experiment(win=mywin, blocks_no=1, trials_no=no_of_trials, mode='motion-shape')
+        exp = Experiment(win=mywin, trials_no=no_of_trials, mode='motion-shape')
     else:
-        exp = Experiment(win=mywin, blocks_no=1, trials_no=no_of_trials, mode='motion-color')
+        exp = Experiment(win=mywin, trials_no=no_of_trials, mode='motion-color')
 
     # randomize shapes and left and right movements with having a fixed number  of left and rights
     # shape
@@ -78,125 +78,102 @@ for blocks in range(no_of_blocks):
         event.waitKeys(keyList='return')  # wait for subject to press enter
         event.clearEvents()
 
-    # start of the block
-    for block in range(exp.blocks_no):
+    # marker - block start
+    port.setData(exp.block_start)
 
-        # marker - block start
-        port.setData(exp.block_start)
+    # display the instructions
+    exp.instruct1_msg.draw()
+    exp.attended_feature.setText(attended_feature_text_joined)
+    exp.attended_feature.pos = (0, -1.5)
+    exp.attended_feature.draw()
+    mywin.flip()
 
-        # display the instructions
-        exp.instruct1_msg.draw()
-        exp.attended_feature.setText(attended_feature_text_joined)
-        exp.attended_feature.pos = (0, -1.5)
-        exp.attended_feature.draw()
+    # press enter to continue
+    event.waitKeys(keyList='return')
+
+    # wait for 2 seconds for subject get ready and then start
+    for frame in range(120):
+        exp.fixat.draw()
         mywin.flip()
 
-        # press enter to continue
-        event.waitKeys(keyList='return')
+    # start of the trial
+    for trial in range(exp.trials_no):
 
-        for frame in range(120):
+        # randomization takes effect here
+        obj_disp = exp.getrand_obj(flash1_shape[trial])
+        mv_shift = (lr[trial], 0)  # 0 because the change is only in x direction
+
+        # Set the initial condition (we can have a res et function/method here)
+        obj_disp.pos = exp.getrand_pos()
+        position = obj_disp.pos
+        obj_disp.fillColor = flash1_color[trial]
+
+        # marker - flash1
+        if exp.isTarget(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
+            port.setData(exp.flash1_start_target)
+
+        elif exp.isStandard(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
+            port.setData(exp.flash1_start_standard)
+
+        else:
+            port.setData(exp.flash1_start_Non)
+
+        # flash 1 (duration = 33ms)
+        for frame in range(2):
+            exp.fixat.draw()
+            obj_disp.draw()
+            mywin.flip()
+            if event.getKeys(keyList='space'):
+                print('SPACE was pressed!')
+                port.setData(exp.response_marker)
+
+        for frame in range(stim_type[trial]):  # SOA
             exp.fixat.draw()
             mywin.flip()
-
-        # start of the trial
-        for trial in range(exp.trials_no):
-
-            # randomization takes effect here
-            obj_disp = exp.getrand_obj(flash1_shape[block*exp.trials_no + trial])
-            mv_shift = (lr[block*exp.trials_no + trial], 0)  # 0 because the change is only in x direction
-
-            # Set the initial condition (we can have a res et function/method here)
-            obj_disp.pos = exp.getrand_pos()
-            position = obj_disp.pos
-            obj_disp.fillColor = flash1_color[block*exp.trials_no + trial]
-
-            # marker - flash1
-            if exp.isTarget(feature1, feature2,
-                            flash1_color[block*exp.trials_no + trial],  # color
-                            flash1_shape[block*exp.trials_no + trial],  # shape
-                            lr[block * exp.trials_no + trial], stim_type[block*exp.trials_no + trial]):  # shift
-
-                port.setData(exp.flash1_start_target)
-
-            elif exp.isStandard(feature1, feature2,
-                                flash1_color[block*exp.trials_no + trial],  # color
-                                flash1_shape[block*exp.trials_no + trial],  # shape
-                                lr[block * exp.trials_no + trial], stim_type[block*exp.trials_no + trial]):  # shift
-
-                port.setData(exp.flash1_start_standard)
-
-            else:
-                port.setData(exp.flash1_start_Notarget)
-
-            # this is where the actual experiment lies
-            for frame in range(2):
-                # these are present in every frame of trial
-                exp.fixat.draw()
-                # exp.imag_rec.draw()
-                # add new stuff
-                obj_disp.draw()
-                # display whatever u wanted to draw
-                mywin.flip()
-
-                if event.getKeys(keyList='space'):
-                    print('SPACE was pressed!')
-                    port.setData(exp.response_marker)
-
-            for frame in range(stim_type[block*exp.trials_no + trial]):  # SOA
-                exp.fixat.draw()
-                mywin.flip()
-
-                if event.getKeys(keyList='space'):
-                    print('SPACE was pressed!')
-                    port.setData(exp.response_marker)
-
-            # Implement the changes between two flashes
-            if exp.mode == 'motion-color':
-                obj_disp = exp.getrand_obj(flash2_shape[block * exp.trials_no + trial])
-                obj_disp.fillColor = flash1_color[block*exp.trials_no + trial]  # color must stay the same
-
-            else:
-                obj_disp = exp.getrand_obj(flash1_shape[block * exp.trials_no + trial])  # object must stay the same
-                obj_disp.fillColor = flash2_color[block * exp.trials_no + trial]  # color should change
-
-            # shift is always there
-            obj_disp.pos = position
-            obj_disp.pos += mv_shift
-
-            # marker - flash 2
-            port.setData(exp.flash2_start)
-
-            # clear the event buffer
-            # event.clearEvents()
             if event.getKeys(keyList='space'):
                 print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
-            # Blank screen for 300 ms = 18 frames on 60Hz monitor
-            for frame in range(2):
-                # these are present in every frame of trial
-                exp.fixat.draw()
-                # exp.imag_rec.draw()
-                # add new stuff
-                obj_disp.draw()
-                # display whatever u wanted to draw
-                mywin.flip()
-                if event.getKeys(keyList='space'):
-                    print('SPACE was pressed!')
-                    port.setData(exp.response_marker)
+        # Implement the changes between two flashes
+        if exp.mode == 'motion-color':
+            obj_disp = exp.getrand_obj(flash2_shape[trial])
+            obj_disp.fillColor = flash1_color[trial]  # color must stay the same
 
+        else:
+            obj_disp = exp.getrand_obj(flash1_shape[trial])  # object must stay the same
+            obj_disp.fillColor = flash2_color[trial]  # color should change
 
-            for frame in range(np.random.randint(15, 45)):  # ITI
-                exp.fixat.draw()
-                mywin.flip()
+        # shift is always there
+        obj_disp.pos = position
+        obj_disp.pos += mv_shift
 
-                if event.getKeys(keyList='space'):
-                    print('SPACE was pressed!')
-                    port.setData(exp.response_marker)
+        # marker - flash 2
+        port.setData(exp.flash2_start)
 
+        if event.getKeys(keyList='space'):
+            print('SPACE was pressed!')
+            port.setData(exp.response_marker)
+
+        # flash 2 (duration = 33ms)
+        for frame in range(2):
+            exp.fixat.draw()
+            obj_disp.draw()
+            mywin.flip()
             if event.getKeys(keyList='space'):
                 print('SPACE was pressed!')
                 port.setData(exp.response_marker)
+
+
+        for frame in range(np.random.randint(15, 45)):  # ITI
+            exp.fixat.draw()
+            mywin.flip()
+            if event.getKeys(keyList='space'):
+                print('SPACE was pressed!')
+                port.setData(exp.response_marker)
+
+        if event.getKeys(keyList='space'):
+            print('SPACE was pressed!')
+            port.setData(exp.response_marker)
 
     event.clearEvents()
 
@@ -204,9 +181,7 @@ for blocks in range(no_of_blocks):
     if block_counter == no_of_blocks:
         exp.closing_msg.draw()
         mywin.flip()
-
         event.waitKeys(keyList='return')
-
 
 # save logged data
 filepath = '../../datalog/'

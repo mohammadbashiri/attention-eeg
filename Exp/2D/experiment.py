@@ -3,7 +3,7 @@ import numpy as np
 
 class Experiment(object):
 
-    def __init__(self, win=None, trials_no=None, blocks_no=None, mode='motion-color'):
+    def __init__(self, win=None, trials_no=None, mode='motion-color'):
 
         # Welcoming/intro
         self.welcome_msg = visual.TextStim(win=win,
@@ -60,21 +60,19 @@ class Experiment(object):
                                     fillColor='red', lineColor=None)
 
         self.trials_no = trials_no
-        self.blocks_no = blocks_no
-        self.total_no = trials_no * blocks_no
         self.mode = mode
 
         # markers
         if mode == 'motion-color':
             self.block_start = 1
-            self.flash1_start_Notarget = 2
+            self.flash1_start_Non = 2
             self.flash1_start_standard = 3
             self.flash1_start_target = 4
             self.flash2_start = 5
 
         if mode == 'motion-shape':
             self.block_start = 6
-            self.flash1_start_Notarget = 7
+            self.flash1_start_Non = 7
             self.flash1_start_standard = 8
             self.flash1_start_target = 9
             self.flash2_start = 10
@@ -128,21 +126,21 @@ class Experiment(object):
 
 
     def randomize2val(self, val1, val2):
-        rnd = np.concatenate((np.ones(self.total_no//2)*val1, np.ones(self.total_no//2)*val2), axis=0)
+        rnd = np.concatenate((np.ones(self.trials_no//2)*val1, np.ones(self.trials_no//2)*val2), axis=0)
         np.random.shuffle(rnd)
         np.random.shuffle(rnd)
         return rnd
 
     def randomize2str(self, str1, str2):
-        rnd = np.concatenate((np.array([str1]).repeat(self.total_no//2), np.array([str2]).repeat(self.total_no//2)),
+        rnd = np.concatenate((np.array([str1]).repeat(self.trials_no//2), np.array([str2]).repeat(self.trials_no//2)),
                              axis=0)
         np.random.shuffle(rnd)
         np.random.shuffle(rnd)
         return rnd
 
     def randomize2type(self, std_delay, std_prob, target_delay, target_prob):
-        rnd = np.concatenate((np.ones(int(self.total_no * std_prob + .5)) * std_delay,
-                              np.ones(int(self.total_no * target_prob + .5)) * target_delay),
+        rnd = np.concatenate((np.ones(int(self.trials_no * std_prob + .5)) * std_delay,
+                              np.ones(int(self.trials_no * target_prob + .5)) * target_delay),
                              axis=0)
         np.random.shuffle(rnd)
         np.random.shuffle(rnd)
