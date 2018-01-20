@@ -14,7 +14,7 @@ no_of_trials = 50  # per block
 block_counter = 0
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9,.9,.9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9, .9, .9))
 
 for blocks in range(no_of_blocks):
 
