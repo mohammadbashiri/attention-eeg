@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3d74d73a-eb5c-4c20-a994-8e7c492cc176" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Exp/2D/Manuel1999.py" afterPath="$PROJECT_DIR$/Exp/2D/Manuel1999.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -359,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1516455777542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added logging">
+      <created>1516464861361</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1516464861361</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -393,7 +399,8 @@
     <MESSAGE value="removed files and added the training file" />
     <MESSAGE value="added the counterpart of actual experiment which does not include parallel port." />
     <MESSAGE value="added an illustration of the number of blocks left" />
-    <option name="LAST_COMMIT_MESSAGE" value="added an illustration of the number of blocks left" />
+    <MESSAGE value="added logging" />
+    <option name="LAST_COMMIT_MESSAGE" value="added logging" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
