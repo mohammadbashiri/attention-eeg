@@ -1,4 +1,7 @@
-# AttentionEEG
+<h1 align="center">
+  <br>
+  "AttentionEEG"
+</h1>
 
 ## :page_with_curl: Expeirment Description 
 
