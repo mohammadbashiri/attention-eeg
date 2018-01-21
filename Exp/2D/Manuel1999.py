@@ -7,17 +7,17 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 # exp and subject spcecifications
-subject_name = 'Bashiri'
-session_no = 10
+subject_name = 'Abdallah'
+session_no = '01'
 no_of_blocks = 2
-no_of_trials = 10  # per block
+no_of_trials = 20  # per block
 block_counter = 0
 
 # initialize a DataLogger object
 data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9, .9, .9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(.9, .9, .9))
 
 for blocks in range(no_of_blocks):
 
@@ -32,7 +32,7 @@ for blocks in range(no_of_blocks):
     flash2_shape = exp.randomize2val(0, 1).astype(int)  # 1: circle, 0: square
 
     # left/right
-    shift_val = 2.5
+    shift_val = 2.4  # 2.5
     lr = exp.randomize2val(shift_val, -shift_val)
 
     # color
@@ -114,14 +114,7 @@ for blocks in range(no_of_blocks):
         obj_disp.fillColor = flash1_color[trial]
 
         # marker - flash1
-        if exp.isTarget(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
-            port.setData(exp.flash1_start_target)
-
-        elif exp.isStandard(feature1, feature2, flash1_color[trial], flash1_shape[trial], lr[trial], stim_type[trial]):
-            port.setData(exp.flash1_start_standard)
-
-        else:
-            port.setData(exp.flash1_start_Non)
+        port.setData(exp.flash1_start_Non)
 
         # flash 1 (duration = 33ms)
         for frame in range(2):
@@ -129,14 +122,14 @@ for blocks in range(no_of_blocks):
             obj_disp.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         for frame in range(stim_type[trial]):  # SOA
             exp.fixat.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         # Implement the changes between two flashes
@@ -156,7 +149,7 @@ for blocks in range(no_of_blocks):
         port.setData(exp.flash2_start)
 
         if event.getKeys(keyList='space'):
-            print('SPACE was pressed!')
+            # print('SPACE was pressed!')
             port.setData(exp.response_marker)
 
         # flash 2 (duration = 33ms)
@@ -165,7 +158,7 @@ for blocks in range(no_of_blocks):
             obj_disp.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
 
@@ -173,11 +166,11 @@ for blocks in range(no_of_blocks):
             exp.fixat.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         if event.getKeys(keyList='space'):
-            print('SPACE was pressed!')
+            # print('SPACE was pressed!')
             port.setData(exp.response_marker)
 
     event.clearEvents()
