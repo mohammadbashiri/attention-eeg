@@ -220,10 +220,7 @@ class DataLogger:
         7 - TrtMnegSpos
         8 - TrtMnegSneg
 
-        11 - StdMposCpos(standard
-        M + / C +) -> attended
-        motion + attended
-        color
+        11 - StdMposCpos(standard M+/C+) -> attended motion + attended color
         12 - StdMposCneg
         13 - StdMnegCpos
         14 - StdMnegCneg
