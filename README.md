@@ -32,11 +32,17 @@ experiment we would go through 5 minutes of training.
 The figure below illustrates the four possible stimuli (square/circle and red/blue) with two example of each trial mode (i.e.,
 motion-shape and motion-color).
 
-![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim_all.png)
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim_all.png" alt="Fig1">
+</p>
 
 Below is an example of one complete sitmulus, including the timing information.
 
-![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim2.png)
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim2.png" alt="Fig1">
+</p>
 
 ## Installation procedure for PsychoPy and ratCAVE
 
