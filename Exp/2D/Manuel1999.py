@@ -9,8 +9,8 @@ port = parallel.ParallelPort(0xDC00)
 # exp and subject spcecifications
 subject_name = 'Abdallah'
 session_no = '01'
-no_of_blocks = 10
-no_of_trials = 4  # per block
+no_of_blocks = 2
+no_of_trials = 20  # per block
 block_counter = 0
 
 # initialize a DataLogger object

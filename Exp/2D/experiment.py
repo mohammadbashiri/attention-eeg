@@ -235,7 +235,7 @@ class DataLogger:
 
         trialtype = None
 
-        if self._stim_type_ls[i] == 3:  # standard stimulus
+        if self._stim_type_ls[i] == '3':  # standard stimulus
             if self._trial_mode_ls[i] == 'motion-color':
 
                 if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
@@ -258,7 +258,7 @@ class DataLogger:
                 elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_shape_ls[i] !=  self._attended_feature1_ls[i]:
                     trialtype = 18
 
-        elif self._stim_type_ls[i] == 9:  # target stimulus
+        elif self._stim_type_ls[i] == '9':  # target stimulus
             if self._trial_mode_ls[i] == 'motion-color':
 
                 if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
