@@ -1,6 +1,6 @@
 # AttentionEEG
 
-## Expeirment Description
+## Expeirment Description :page_with_curl:
 
 This is an attention-related experiment in which you are required to respond when you have detected a stimulus with 
 specific features. There are two objects in this experiment (i.e., circle and square), that could appear with two different 
@@ -43,6 +43,7 @@ Below is an example of one complete sitmulus, including the timing information.
 	<br>
 	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim2.png" alt="Fig1">
 </p>
+
 
 ## Installation procedure for PsychoPy and ratCAVE
 
