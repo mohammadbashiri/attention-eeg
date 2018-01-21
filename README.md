@@ -26,6 +26,11 @@ some of them have a shorter time between two flashes (standard stimulus), and so
 supposed to press SPACE only when you detect the longer one. To make sure you have understood this concept, before stating the 
 experiment we would go through 5 minutes of training.
 
+The figure below illustrates the four possible stimuli (square/circle and red/blue) with two example of each trial mode (i.e.,
+motion-shape and motion-color).
+
+![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim_all.png)
+
 ## Installation procedure for PsychoPy and ratCAVE
 
 1. 
