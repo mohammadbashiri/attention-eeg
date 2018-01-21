@@ -1,9 +1,0 @@
-trial	block	mode	shape1	shape2	color1	color2	shift	stim_type	feat1	feat2
-1	1	motion-shape	0	1	red	blue	-2.5	3	1	2.5
-2	1	motion-shape	0	0	red	blue	2.5	3	1	2.5
-3	1	motion-shape	1	0	blue	red	-2.5	9	1	2.5
-4	1	motion-shape	1	1	blue	red	2.5	3	1	2.5
-5	2	motion-color	1	0	red	red	2.5	3	red	-2.5
-6	2	motion-color	0	1	blue	blue	2.5	3	red	-2.5
-7	2	motion-color	0	0	blue	red	-2.5	3	red	-2.5
-8	2	motion-color	1	1	red	blue	-2.5	9	red	-2.5

@@ -68,11 +68,11 @@ class Experiment(object):
                                        fillColor='red', lineColor=None)
 
         self.square = visual.Rect(win=win,
-                                  width=3, height=3, pos=(0, 3.5),
+                                  width=1.1*2, height=1.1*2, pos=(0, 3.5),
                                   fillColor='red', lineColor=None)
 
         self.circle = visual.Circle(win=win,
-                                    radius=1.5, pos=(0, 3.5),
+                                    radius=.67*2, pos=(0, 3.5),
                                     fillColor='red', lineColor=None)
 
         self.trials_no = trials_no

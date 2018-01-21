@@ -17,7 +17,7 @@ block_counter = 0
 data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="deg",color=(.9, .9, .9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(.9, .9, .9))
 
 for blocks in range(no_of_blocks):
 
@@ -32,7 +32,7 @@ for blocks in range(no_of_blocks):
     flash2_shape = exp.randomize2val(0, 1).astype(int)  # 1: circle, 0: square
 
     # left/right
-    shift_val = 2.5
+    shift_val = 2.4  # 2.5
     lr = exp.randomize2val(shift_val, -shift_val)
 
     # color
