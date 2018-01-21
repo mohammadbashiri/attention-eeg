@@ -13,7 +13,7 @@ feature (either shape or color). For instance, if you are asked to attend to sha
 only care about circles that moved to left (w.r.t to first flash). Note that in this case you are only asked about the shape, hence, 
 you should ignore the color and ONLY attend to shape. On the other hand, if you are asked about color, you should ignore shape.
 
-![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim1.png)
+![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim1.png)
 
 Within the attended feature (specific movement and specific color/shape), there are two variants (Standard and Target). 
 These two differ in the timing between the two flashes. The so-called Standard stimuli have shorter time between the two
@@ -29,11 +29,11 @@ experiment we would go through 5 minutes of training.
 The figure below illustrates the four possible stimuli (square/circle and red/blue) with two example of each trial mode (i.e.,
 motion-shape and motion-color).
 
-![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim_all.png)
+![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim_all.png)
 
 Below is an example of one complete sitmulus, including the timing information.
 
-![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim2.png)
+![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim2.png)
 
 ## Installation procedure for PsychoPy and ratCAVE
 
