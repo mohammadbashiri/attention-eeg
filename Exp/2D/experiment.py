@@ -208,6 +208,82 @@ class DataLogger:
         self._attended_feature2_ls += [str(feature2)] * self._trial_no
 
 
+    def _get_trialtype(self, i):
+
+        '''
+        1 - TrtMposCpos(standard M+/C+) -> attended motion + attended color
+        2 - TrtMposCneg
+        3 - TrtMnegCpos
+        4 - TrtMnegCneg
+        5 - TrtMposSpos
+        6 - TrtMposSneg
+        7 - TrtMnegSpos
+        8 - TrtMnegSneg
+
+        11 - StdMposCpos(standard M+/C+) -> attended motion + attended color
+        12 - StdMposCneg
+        13 - StdMnegCpos
+        14 - StdMnegCneg
+        15 - StdMposSpos
+        16 - StdMposSneg
+        17 - StdMnegSpos
+        18 - StdMnegSneg
+
+        :param i: index of the trial (starts from 0)
+        :return: type of trial (1-8 or 11-18)
+        '''
+
+        trialtype = None
+
+        if self._stim_type_ls[i] == '3':  # standard stimulus
+            if self._trial_mode_ls[i] == 'motion-color':
+
+                if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 11
+                elif self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] != self._attended_feature1_ls[i]:
+                    trialtype = 12
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 13
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_color_ls[i] !=  self._attended_feature1_ls[i]:
+                    trialtype = 14
+
+            elif self._trial_mode_ls[i] == 'motion-shape':
+
+                if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_shape_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 15
+                elif self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_shape_ls[i] != self._attended_feature1_ls[i]:
+                    trialtype = 16
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_shape_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 17
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_shape_ls[i] !=  self._attended_feature1_ls[i]:
+                    trialtype = 18
+
+        elif self._stim_type_ls[i] == '9':  # target stimulus
+            if self._trial_mode_ls[i] == 'motion-color':
+
+                if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 1
+                elif self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_color_ls[i] != self._attended_feature1_ls[i]:
+                    trialtype = 2
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_color_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 3
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_color_ls[i] !=  self._attended_feature1_ls[i]:
+                    trialtype = 4
+
+            elif self._trial_mode_ls[i] == 'motion-shape':
+
+                if self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_shape_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 5
+                elif self._shift_ls[i] == self._attended_feature2_ls[i] and self._flash1_shape_ls[i] != self._attended_feature1_ls[i]:
+                    trialtype = 6
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_shape_ls[i] == self._attended_feature1_ls[i]:
+                    trialtype = 7
+                elif self._shift_ls[i] != self._attended_feature2_ls[i] and self._flash1_shape_ls[i] !=  self._attended_feature1_ls[i]:
+                    trialtype = 8
+
+        return trialtype
+
+
     def save(self, filepath):
 
         filename = filepath + self.subject_name + '_s' + self.session_no + '_' + str(self._block_no) + 'blocks_each' + str(
@@ -220,3 +296,12 @@ class DataLogger:
                                   self._flash2_color_ls, self._shift_ls, self._stim_type_ls, self._attended_feature1_ls, self._attended_feature2_ls)):
                 f.write(str(trial + 1) + '\t' + block + '\t' + mode + '\t' + shape1 + '\t' + shape2 + '\t' + color1 + '\t' +
                         color2 + '\t' + shift + '\t' + stim_t + '\t' + feat1 + '\t' + feat2 + '\n')
+
+        filename = filepath + self.subject_name + '_s' + self.session_no + '_' + str(self._block_no) + 'blocks_each' + str(
+            self._trial_no) + 'trials_trialtype' + '.txt'
+
+        with open(filename, 'w') as f:
+            f.write('trialtype\n')
+            for trial in range(len(self._block_no_ls)):
+                trialtype = self._get_trialtype(trial)
+                f.write(str(trialtype) + '\n')
