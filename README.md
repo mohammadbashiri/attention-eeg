@@ -1,6 +1,6 @@
 # AttentionEEG
 
-## Expeirment Description :page_with_curl:
+## :page_with_curl: Expeirment Description 
 
 This is an attention-related experiment in which you are required to respond when you have detected a stimulus with 
 specific features. There are two objects in this experiment (i.e., circle and square), that could appear with two different 
