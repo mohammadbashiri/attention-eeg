@@ -122,14 +122,14 @@ for blocks in range(no_of_blocks):
             obj_disp.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         for frame in range(stim_type[trial]):  # SOA
             exp.fixat.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         # Implement the changes between two flashes
@@ -149,7 +149,7 @@ for blocks in range(no_of_blocks):
         port.setData(exp.flash2_start)
 
         if event.getKeys(keyList='space'):
-            print('SPACE was pressed!')
+            # print('SPACE was pressed!')
             port.setData(exp.response_marker)
 
         # flash 2 (duration = 33ms)
@@ -158,7 +158,7 @@ for blocks in range(no_of_blocks):
             obj_disp.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
 
@@ -166,11 +166,11 @@ for blocks in range(no_of_blocks):
             exp.fixat.draw()
             mywin.flip()
             if event.getKeys(keyList='space'):
-                print('SPACE was pressed!')
+                # print('SPACE was pressed!')
                 port.setData(exp.response_marker)
 
         if event.getKeys(keyList='space'):
-            print('SPACE was pressed!')
+            # print('SPACE was pressed!')
             port.setData(exp.response_marker)
 
     event.clearEvents()
