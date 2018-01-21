@@ -14,7 +14,8 @@ only care about circles that moved to left (w.r.t to first flash). Note that in 
 you should ignore the color and ONLY attend to shape. On the other hand, if you are asked about color, you should ignore shape.
 
 <p align="center">
-![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim1.png)
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim1.png" alt="Fig1">
 </p>
 
 Within the attended feature (specific movement and specific color/shape), there are two variants (Standard and Target). 
