@@ -31,6 +31,8 @@ motion-shape and motion-color).
 
 ![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim_all.png)
 
+Below is an example of one complete sitmulus, including the timing information.
+
 ## Installation procedure for PsychoPy and ratCAVE
 
 1. 
