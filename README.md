@@ -15,7 +15,7 @@ you should ignore the color and ONLY attend to shape. On the other hand, if you 
 
 <p align="center">
 	<br>
-	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim1.png" alt="Fig1">
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/stim1.png" alt="Fig1">
 </p>
 
 Within the attended feature (specific movement and specific color/shape), there are two variants (Standard and Target). 
@@ -34,14 +34,14 @@ motion-shape and motion-color).
 
 <p align="center">
 	<br>
-	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim_all.png" alt="Fig1">
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/stim_all.png" alt="Fig1">
 </p>
 
 Below is an example of one complete sitmulus, including the timing information.
 
 <p align="center">
 	<br>
-	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim2.png" alt="Fig1">
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/stim2.png" alt="Fig1">
 </p>
 
 
