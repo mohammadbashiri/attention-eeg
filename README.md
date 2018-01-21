@@ -13,7 +13,10 @@ feature (either shape or color). For instance, if you are asked to attend to sha
 only care about circles that moved to left (w.r.t to first flash). Note that in this case you are only asked about the shape, hence, 
 you should ignore the color and ONLY attend to shape. On the other hand, if you are asked about color, you should ignore shape.
 
+<h1 align="center">
+  <br>
 ![Picture](https://github.com/mohammadbashiri93/AttentionEEG/blob/dev/Fig/stim1.png)
+</h1>
 
 Within the attended feature (specific movement and specific color/shape), there are two variants (Standard and Target). 
 These two differ in the timing between the two flashes. The so-called Standard stimuli have shorter time between the two
