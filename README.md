@@ -12,7 +12,8 @@ In the beginning of each block, you would be asked to attend to specific movemen
 feature (either shape or color). For instance, if you are asked to attend to shape, and attend to circle going to left; you would 
 only care about circles that moved to left (w.r.t to first flash). Note that in this case you are only asked about the shape, hence, you should ignore the color and ONLY attend to shape. On the other hand, if you are asked about color, you should ignore shape.
 
-<img align="center" src="https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim1.png">
+![alt text](https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim1.png)
+<div style="text-align:center"><img src ="https://github.com/mohammadbashiri93/AttentionEEG/blob/readme/Fig/stim1.png" /></div>
 
 ## Installation procedure for PsychoPy and ratCAVE
 
