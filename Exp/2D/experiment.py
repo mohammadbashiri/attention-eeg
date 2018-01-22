@@ -64,15 +64,15 @@ class Experiment(object):
                                          lineColor='black')
 
         self.triangle = visual.Polygon(win=win,
-                                       radius=1.5, pos=(0, 2.35),
+                                       radius=1.5, pos=(0, 3.35),
                                        fillColor='red', lineColor=None)
 
         self.square = visual.Rect(win=win,
-                                  width=2.5, height=1.1*2, pos=(0, 2.35),
+                                  width=2.5, height=1.1*2, pos=(0, 3.35),
                                   fillColor='red', lineColor=None)
 
         self.circle = visual.Circle(win=win,
-                                    radius=1.55, pos=(0, 2.35),
+                                    radius=1.55, pos=(0, 3.35),
                                     fillColor='red', lineColor=None)
 
         self.trials_no = trials_no
@@ -174,7 +174,7 @@ class Experiment(object):
             return self.square
 
     def getrand_pos(self):
-        return np.random.rand()*7.3-3.65,  2.35  # (x, y) this depends on the boundaries (x-axis) of the imaginary rectangle
+        return np.random.rand()*7.3-3.65,  3.35  # (x, y) this depends on the boundaries (x-axis) of the imaginary rectangle
 
 class DataLogger:
 
