@@ -32,7 +32,7 @@ for blocks in range(no_of_blocks):
     flash2_shape = exp.randomize2val(0, 1).astype(int)  # 1: circle, 0: square
 
     # left/right
-    shift_val = 2.4  # 2.5
+    shift_val = 1.4  # 2.5
     lr = exp.randomize2val(shift_val, -shift_val)
 
     # color
