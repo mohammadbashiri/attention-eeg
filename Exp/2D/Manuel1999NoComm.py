@@ -17,7 +17,7 @@ block_counter = 0
 data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
-mywin = visual.Window(monitor="testMonitor", units="cm", color=(.9, .9, .9))
+mywin = visual.Window(fullscr=True, monitor="testMonitor", units="cm", color=(.9, .9, .9))
 
 for blocks in range(no_of_blocks):
 
