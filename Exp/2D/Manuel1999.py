@@ -9,15 +9,15 @@ port = parallel.ParallelPort(0xDC00)
 # exp and subject spcecifications
 subject_name = 'Abdallah'
 session_no = '01'
-no_of_blocks = 2
-no_of_trials = 20  # per block
+no_of_blocks = 20
+no_of_trials = 50  # per block
 block_counter = 0
 
 # initialize a DataLogger object
 data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(.9, .9, .9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(1., 1., 1.))
 
 for blocks in range(no_of_blocks):
 
@@ -54,7 +54,7 @@ for blocks in range(no_of_blocks):
     elif feature1 == 1:
         feature1Text = 'circle'
 
-    if feature2 == -2.5:
+    if feature2 == -shift_val:
         feature2Text = 'left'
     else:
         feature2Text = 'right'
@@ -145,12 +145,12 @@ for blocks in range(no_of_blocks):
         obj_disp.pos = position
         obj_disp.pos += mv_shift
 
-        # marker - flash 2
-        port.setData(exp.flash2_start)
-
         if event.getKeys(keyList='space'):
             # print('SPACE was pressed!')
             port.setData(exp.response_marker)
+
+        # marker - flash 2
+        port.setData(exp.flash2_start)
 
         # flash 2 (duration = 33ms)
         for frame in range(2):
@@ -188,4 +188,3 @@ data_logger.save(filepath=filepath)
 # cleanup
 mywin.close()
 core.quit()
-

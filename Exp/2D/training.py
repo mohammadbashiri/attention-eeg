@@ -10,14 +10,14 @@ port = parallel.ParallelPort(0xDC00)
 subject_name = 'Abdallah'
 session_no = '01'
 no_of_blocks = 2
-no_of_trials = 20  # per block
+no_of_trials = 10  # per block
 block_counter = 0
 
 # initialize a DataLogger object
 data_logger = DataLogger(subject_name=subject_name, session_no=session_no, no_of_blocks=no_of_blocks, no_of_trials=no_of_trials)
 
 # create a window
-mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(.9, .9, .9))
+mywin = visual.Window((1920, 1200), screen=1, monitor="testMonitor", units="cm", color=(1., 1., 1.))
 
 for blocks in range(no_of_blocks):
 
@@ -32,7 +32,7 @@ for blocks in range(no_of_blocks):
     flash2_shape = exp.randomize2val(0, 1).astype(int)  # 1: circle, 0: square
 
     # left/right
-    shift_val = 2.4  # 2.5
+    shift_val = 1.4  # 2.5
     lr = exp.randomize2val(shift_val, -shift_val)
 
     # color
@@ -40,8 +40,8 @@ for blocks in range(no_of_blocks):
     flash2_color = exp.randomize2str('red', 'blue')
 
     # type
-    prob_target = .25
-    prob_std = .75
+    prob_target = .5
+    prob_std = .5
     stim_type = exp.randomize2type(3, prob_std, 9, prob_target)  # delay (frames), probability, delay (frames), probability
 
     # get randomized target value, depending on the experiment mode
@@ -54,7 +54,7 @@ for blocks in range(no_of_blocks):
     elif feature1 == 1:
         feature1Text = 'circle'
 
-    if feature2 == -2.5:
+    if feature2 == -shift_val:
         feature2Text = 'left'
     else:
         feature2Text = 'right'
@@ -145,12 +145,12 @@ for blocks in range(no_of_blocks):
         obj_disp.pos = position
         obj_disp.pos += mv_shift
 
-        # marker - flash 2
-        port.setData(exp.flash2_start)
-
         if event.getKeys(keyList='space'):
             # print('SPACE was pressed!')
             port.setData(exp.response_marker)
+
+        # marker - flash 2
+        port.setData(exp.flash2_start)
 
         # flash 2 (duration = 33ms)
         for frame in range(2):
@@ -188,4 +188,3 @@ for blocks in range(no_of_blocks):
 # cleanup
 mywin.close()
 core.quit()
-
