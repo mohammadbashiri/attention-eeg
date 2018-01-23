@@ -7,9 +7,9 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 # exp and subject spcecifications
-subject_name = ''
+subject_name = 'Raja'
 session_no = '01'
-no_of_blocks = 20
+no_of_blocks = 40
 no_of_trials = 50  # per block
 block_counter = 0
 

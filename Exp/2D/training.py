@@ -7,10 +7,10 @@ import numpy as np
 port = parallel.ParallelPort(0xDC00)
 
 # exp and subject spcecifications
-subject_name = 'Abdallah'
-session_no = '01'
-no_of_blocks = 2
-no_of_trials = 10  # per block
+subject_name = ''
+session_no = ''
+no_of_blocks = 3
+no_of_trials = 30  # per block
 block_counter = 0
 
 # initialize a DataLogger object
