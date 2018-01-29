@@ -45,6 +45,7 @@ Below is an example of one complete sitmulus, including the timing information.
 </p>
 
 
+
 ## Electrophysiological Recording
 
 Device:... .
@@ -63,6 +64,21 @@ Trials with incorrect response (false alarms and misses) were excluded from anal
 
 ## Preliminary Results
 
+# Motion attention effect (with color)
+
+
+# Motion attention effect (with shape)
+
+
+# Color attention effect
+
+<p align="center">
+	<br>
+	<img src="https://drive.google.com/open?id=1dWDYVzuUvXFbpTivJYlH7DNoCPLQR1VU" alt="Fig1">
+</p>
+
+
+# Shape attention effect
 
 
 
