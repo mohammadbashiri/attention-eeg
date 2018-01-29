@@ -45,6 +45,27 @@ Below is an example of one complete sitmulus, including the timing information.
 </p>
 
 
+## Electrophysiological Recording
+
+Device:... .
+Channels: Fp1, Fp2, F7, F3, Fz, F4, F8, FC5, FC1, FC2, FC6, T7, C3, Cz, C4, T8, CP5, CP1, CP2, CP6, P7, P3, Pz, P4, P8, O1, O2.
+EOG: below left eye (horizontal EOG) and between two eyebrows (vertical EOG).
+Electrode impedance were kept below 5 k\Omega.
+Signal was bandpass filtered with cut-off frquencies of 1 and 20 Hz.
+Sampling rate was 1000 Hz.
+reference:... , and a ground was located on the forehead (Fpz position).
+Offline averaging was performed by extracting overlapping epochs of the EEG beginning 200 ms before the first stimulus of each pair
+and continuing for 800 ms poststimulus.
+Signal rejection/correction was performed before averaging.
+Trials with incorrect response (false alarms and misses) were excluded from analysis.
+
+
+
+## Preliminary Results
+
+
+
+
 ## Installation procedure for PsychoPy and ratCAVE
 
 1. 
