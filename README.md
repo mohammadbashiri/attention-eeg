@@ -64,13 +64,13 @@ Trials with incorrect response (false alarms and misses) were excluded from anal
 
 ## Preliminary Results
 
-# Motion attention effect (with color)
+### Motion attention effect (with color)
 
 
-# Motion attention effect (with shape)
+### Motion attention effect (with shape)
 
 
-# Color attention effect
+### Color attention effect
 
 <p align="center">
 	<br>
@@ -78,7 +78,7 @@ Trials with incorrect response (false alarms and misses) were excluded from anal
 </p>
 
 
-# Shape attention effect
+### Shape attention effect
 
 
 
