@@ -71,11 +71,21 @@ Trials with incorrect response (false alarms and misses) were excluded from anal
 	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/MotionColorFig.PNG" alt="Fig1">
 </p>
 
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/MotionColorChanMeanFig.PNG" alt="Fig1">
+</p>
+
 ### Motion attention effect (with shape)
 
 <p align="center">
 	<br>
 	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/MotionShapeFig.PNG" alt="Fig1">
+</p>
+
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/MotionShapeChanMeanFig.PNG" alt="Fig1">
 </p>
 
 ### Color attention effect
@@ -85,12 +95,22 @@ Trials with incorrect response (false alarms and misses) were excluded from anal
 	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/ColorFig.PNG" alt="Fig1">
 </p>
 
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/ColorChanMeanFig.PNG" alt="Fig1">
+</p>
+
 
 ### Shape attention effect
 
 <p align="center">
 	<br>
 	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/ShapeFig.PNG" alt="Fig1">
+</p>
+
+<p align="center">
+	<br>
+	<img src="https://github.com/mohammadbashiri93/AttentionEEG/blob/master/Fig/ShapeChanMeanFig.PNG" alt="Fig1">
 </p>
 
 ## Installation procedure for PsychoPy and ratCAVE
